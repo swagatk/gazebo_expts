@@ -24,7 +24,7 @@
   <xacro:include filename="$(find skbot_description)/urdf/materials.xacro" />
   <xacro:include filename="$(find skbot_description)/urdf/macros.xacro" />
 
-  <!--
+  <!-- 
   <link name="footprint" />
 
   <joint name="base_joint" type="fixed">
@@ -118,5 +118,38 @@
       <box_inertia m="${cameraMass}" x="${cameraSize}" y="${cameraSize}" z="${cameraSize}" />
     </inertial>
   </link>
+
+  <!-- Adding a Laser Scanner -->
+  <joint name="hokuyo_joint" type="fixed">
+    <axis xyz="0 1 0" />
+    <origin xyz="${chassisLength/2-0.005} 0 ${chassisHeight+wheelRadius}" rpy="0 0 0" />
+    <!--origin xyz=".15 0 .1" rpy="0 0 0"/-->
+    <parent link="chassis"/>
+    <child link="hokuyo"/>
+  </joint>
+
+  <!-- Hokuyo Laser -->
+  <link name="hokuyo">
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.1 0.1 0.1"/>
+      </geometry>
+    </collision>
+
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://skbot_description/meshes/hokuyo.dae"/>
+      </geometry>
+    </visual>
+
+    <inertial>
+      <mass value="1e-5" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link>
+
 
 </robot>
