@@ -2,33 +2,36 @@
 <robot name="skbot" xmlns:xacro="http://www.ros.org/wiki/xacro">
    <!-- put robot description here -->
   
-   <xacro:property name="PI" value="3.1415926535897931"/>
+  <xacro:property name="PI" value="3.1415926535897931"/>
   <xacro:property name="chassisHeight" value="0.1"/>
   <xacro:property name="chassisLength" value="0.4"/>
   <xacro:property name="chassisWidth" value="0.2"/>
   <xacro:property name="chassisMass" value="50"/>
-
-  <xacro:property name="casterRadius" value="0.05"/>
-  <xacro:property name="casterMass" value="5"/>
 
   <xacro:property name="wheelWidth" value="0.05"/>
   <xacro:property name="wheelRadius" value="0.1"/>
   <xacro:property name="wheelPos" value="0.25"/>
   <xacro:property name="wheelMass" value="5"/>
 
+  <xacro:property name="casterRadius" value="0.05"/>
+  <xacro:property name="casterMass" value="5"/>
+
   <xacro:property name="cameraSize" value="0.05"/>
   <xacro:property name="cameraMass" value="0.1"/>
+
 
   <xacro:include filename="$(find skbot_description)/urdf/skbot.gazebo" />
   <xacro:include filename="$(find skbot_description)/urdf/materials.xacro" />
   <xacro:include filename="$(find skbot_description)/urdf/macros.xacro" />
 
-  <!--link name="footprint" />
+  <!--
+  <link name="footprint" />
 
   <joint name="base_joint" type="fixed">
     <parent link="footprint" />
     <child link="chassis" />
-  </joint-->
+  </joint>
+  -->
 
   <link name="chassis">
     <pose> 0 0 0.1 0 0 0 </pose>
@@ -81,8 +84,39 @@
     </inertial>
   </link>
 
+  <!-- Adding Left and Right Wheels -->
   <wheel lr="left" tY="1"/>
   <wheel lr="right" tY="-1"/>
 
+  <!-- Adding a Camera -->
+  <joint name="camera_base" type="fixed">
+    <parent link="chassis"/>
+    <child link="camera" />
+    <!--origin xyz="${chassisLength/2-cameraSize/2} 0 ${chassisHeight+wheelRadius}" rpy="0 0 0" /-->
+    <origin xyz=".2 0 0.1" rpy="0 0 0" />
+  </joint>
+
+  <link name="camera">
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="${cameraSize} ${cameraSize} ${cameraSize}"/>
+      </geometry>
+    </collision>
+
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="${cameraSize} ${cameraSize} ${cameraSize}"/>
+      </geometry>
+      <material name="blue"/>
+    </visual>
+
+    <inertial>
+      <mass value="${cameraMass}" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <box_inertia m="${cameraMass}" x="${cameraSize}" y="${cameraSize}" z="${cameraSize}" />
+    </inertial>
+  </link>
 
 </robot>

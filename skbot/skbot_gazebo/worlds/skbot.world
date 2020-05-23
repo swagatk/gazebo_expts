@@ -10,6 +10,18 @@
       <uri> model://ground_plane </uri>
     </include>
 
+    <include>
+      <uri> model://cabinet </uri>
+      <pose>12 13 0 0 0 0</pose>
+      <static>true</static>
+    </include>
+
+    <include>
+      <uri> model://postbox </uri>
+      <pose>15 -10 0 0 0 0 </pose>
+      <static>true</static>
+    </include>
+
   </world>
 </sdf>
 

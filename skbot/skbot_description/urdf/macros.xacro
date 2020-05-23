@@ -1,6 +1,5 @@
 <?xml version="1.0"?>
 <robot>
-        <!-- Put here the robot description -->
 
   <macro name="cylinder_inertia" params="m r h">
     <inertia  ixx="${m*(3*r*r+h*h)/12}" ixy = "0" ixz = "0"
@@ -56,7 +55,6 @@
       <fdir1 value="1 0 0"/>
       <material>Gazebo/White</material>
     </gazebo>
-
 
     <joint name="${lr}_wheel_hinge" type="continuous">
       <parent link="chassis"/>
