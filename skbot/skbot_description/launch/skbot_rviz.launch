@@ -12,8 +12,8 @@
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher"/>
 
   <!-- Show in Rviz   -->
-  <node name="rviz" pkg="rviz" type="rviz"/>
-  <!--node name="rviz" pkg="rviz" type="rviz" args="-d $(find mybot_description)/launch/myrobot.rviz"/-->
+  <!--node name="rviz" pkg="rviz" type="rviz"/-->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find skbot_description)/rviz/test.rviz"/>
 
 </launch>
  
