@@ -18,7 +18,6 @@
     <arg name="debug" value="$(arg debug)"/>
   </include>
 
-  
   <param name="robot_description" command="$(find xacro)/xacro.py '$(find skbot_description)/urdf/skbot.xacro'"/>
 
   <node name="skbot_spawn" pkg="gazebo_ros" type="spawn_model" output="screen"
