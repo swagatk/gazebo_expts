@@ -13,7 +13,7 @@
   args="-urdf -param robot_description -model skbot " />
 
   <!-- ros_control mybot launch file -->
-  <include file="$(find skbot_control)/launch/skbot_control.launch" />
+  <!--include file="$(find skbot_control)/launch/skbot_control.launch" /-->
 
 </launch>
 

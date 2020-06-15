@@ -55,6 +55,7 @@
     </inertial>
   </link>
 
+
   <joint name="fixed" type="fixed">
     <parent link="chassis"/>
     <child link="caster_wheel"/>
@@ -88,6 +89,7 @@
   <wheel lr="left" tY="1"/>
   <wheel lr="right" tY="-1"/>
 
+
   <!-- Adding a Camera -->
   <joint name="camera_base" type="fixed">
     <parent link="chassis"/>
@@ -95,7 +97,6 @@
     <!--origin xyz="${chassisLength/2-cameraSize/2} 0 ${chassisHeight+wheelRadius}" rpy="0 0 0" /-->
     <origin xyz=".2 0 0.1" rpy="0 0 0" />
   </joint>
-
   <link name="camera">
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0"/>
