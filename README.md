@@ -12,7 +12,7 @@ A PDF presentation is included to understand the code.
 - Download / clone the repository in your home directory
 
 ```
-$ git clone -b motion https://github.com/swagatk/gazebo_expts.git
+$ git clone https://github.com/swagatk/gazebo_expts.git
 ```
 
 - Copy the folder '~/gazebo_expts/skbot/' to your `~/catkin_ws/src` folder  and run catkin_make
